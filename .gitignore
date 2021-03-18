@@ -1,0 +1,6 @@
+.idea/
+.vscode/
+.venv/
+
+ml/model/
+*.mp4
