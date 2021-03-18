@@ -22,8 +22,18 @@ virtualenv .venv -p python3
 ```
 
 Use the environment while working on the project:
+
+Linux:
 ```shell
 source .venv/bin/activate
+```
+
+
+Windows (using Command Prompt)
+```shell
+cd .venv/Scripts
+activate.bat
+cd ..\..
 ```
 
 Install Python dependencies using:
