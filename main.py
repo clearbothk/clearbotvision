@@ -11,9 +11,14 @@ logger = logging.getLogger("root")
 
 def main(args):
     detector = load_detector(args)
-    video_writer_original = load_video_writer("recording_original.mp4", (1280 , 720))
-    video_writer_labelled = load_video_writer("recording_labelled.mp4", (1280 , 720))
-    cap = load_camera(0)
+    video_writer_original = load_video_writer(
+        "recording_original.mp4", (1280, 720))
+    video_writer_labelled = load_video_writer(
+        "recording_labelled.mp4", (1280, 720))
+    if(args.video_input == ""):
+        cap = load_camera(0)
+    else:
+        cap = cv2.VideoCapture(args.video_input)
 
     while True:
         (success, frame) = cap.read()
@@ -58,9 +63,14 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Clearbot AI and PController")
-    parser.add_argument('-v', '--video_out', type=bool, default=False, help="Show the camera video output")
-    parser.add_argument('--debug', type=bool, default=False, help="Switch to debug mode")
-    parser.add_argument('-m', '--model', type=str, default="full", help="Either 'tiny' or 'full' model")
+    parser.add_argument('-v', '--video_out', type=bool,
+                        default=False, help="Show the camera video output")
+    parser.add_argument('-i', '--video_input', type=str,
+                        default="", help="Input")
+    parser.add_argument('--debug', type=bool, default=False,
+                        help="Switch to debug mode")
+    parser.add_argument('-m', '--model', type=str,
+                        default="full", help="Either 'tiny' or 'full' model")
     _args = parser.parse_args()
     if _args.debug:
         logger.setLevel(logging.DEBUG)
