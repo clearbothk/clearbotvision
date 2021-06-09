@@ -5,6 +5,7 @@ from vision.video import load_video_writer
 from ml.model import load_detector
 import logging
 import argparse
+import tqdm
 
 logger = logging.getLogger("root")
 
@@ -61,6 +62,19 @@ def main(args):
     video_writer_original.release()
 
 
+def detectron():
+  from ml.model import load_detectron
+  cap = cv2.VideoCapture(0)
+  demo = load_detectron()
+  WINDOW_NAME = "Clearbot"
+  for vis in tqdm.tqdm(demo.run_on_video(cap)):
+    cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+    cv2.imshow(WINDOW_NAME, vis)
+    if cv2.waitKey(1) == 27:
+        break  # esc to quit
+  cap.release()
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Clearbot AI and PController")
     parser.add_argument('-v', '--video_out', type=bool,
@@ -76,4 +90,4 @@ if __name__ == "__main__":
         logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.INFO)
-    main(_args)
+    detectron()
