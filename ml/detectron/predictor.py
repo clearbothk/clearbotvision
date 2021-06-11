@@ -1,4 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
 import os
 import tqdm
 import atexit
@@ -235,7 +234,7 @@ class DetectronDetector():
     self.cfg.MODEL.PANOPTIC_FPN.COMBINE.INSTANCES_CONFIDENCE_THRESH = 0.5
     self.cfg.MODEL.WEIGHTS = os.path.sep.join(
               [os.path.dirname(os.path.realpath(__file__)), "model", "detectron.pth"])
-    self.cfg.MODEL.DEVICE = "cpu"
+    self.cfg.MODEL.DEVICE = "cpu" # Comment out if using GPU
     self.cfg.SOLVER.IMS_PER_BATCH = 2
     self.cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128
     self.cfg.SOLVER.STEPS = []
