@@ -1,0 +1,19 @@
+[
+  { "supercategory": "", "id": 1, "name": "Aluminium foil" },
+  { "supercategory": "", "id": 2, "name": "Can" },
+  { "supercategory": "", "id": 3, "name": "Carton" },
+  { "supercategory": "", "id": 4, "name": "Cup" },
+  { "supercategory": "", "id": 5, "name": "Glass bottle" },
+  { "supercategory": "", "id": 6, "name": "Metal bottle cap" },
+  { "supercategory": "", "id": 7, "name": "Other" },
+  { "supercategory": "", "id": 8, "name": "Paper" },
+  { "supercategory": "", "id": 9, "name": "Plastic bottle" },
+  { "supercategory": "", "id": 10, "name": "Plastic bottle cap" },
+  { "supercategory": "", "id": 11, "name": "Plastic container" },
+  { "supercategory": "", "id": 12, "name": "Plastic film" },
+  { "supercategory": "", "id": 13, "name": "Plastic lid" },
+  { "supercategory": "", "id": 14, "name": "Pop tab" },
+  { "supercategory": "", "id": 15, "name": "Straw" },
+  { "supercategory": "", "id": 16, "name": "Styrofoam piece" },
+  { "supercategory": "", "id": 17, "name": "Wrapper" }
+]

@@ -2,7 +2,7 @@ import sys
 import cv2
 from vision.camera import load_camera
 from vision.video import load_video_writer
-from ml.model import load_detector
+from ml.model import load_yolo, load_detectron
 import logging
 import argparse
 import tqdm
@@ -10,7 +10,7 @@ import tqdm
 logger = logging.getLogger("root")
 
 
-def main(args):
+def yolo(args):
     detector = load_detector(args)
     video_writer_original = load_video_writer(
         "recording_original.mp4", (1280, 720))
@@ -65,13 +65,8 @@ def main(args):
 def detectron():
   from ml.model import load_detectron
   cap = cv2.VideoCapture(0)
-  demo = load_detectron()
-  WINDOW_NAME = "Clearbot"
-  for vis in tqdm.tqdm(demo.run_on_video(cap)):
-    cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-    cv2.imshow(WINDOW_NAME, vis)
-    if cv2.waitKey(1) == 27:
-        break  # esc to quit
+  detector = load_detectron()
+  detector.detect(cap)
   cap.release()
 
 
@@ -83,11 +78,18 @@ if __name__ == "__main__":
                         default="", help="Input")
     parser.add_argument('--debug', type=bool, default=False,
                         help="Switch to debug mode")
-    parser.add_argument('-m', '--model', type=str,
+    parser.add_argument('-m', '--modeltype', type=str,
+                        default="detectron", help="Available: 'yolo' or 'detectron'")
+    parser.add_argument('-s', '--modelsize', type=str,
                         default="full", help="Either 'tiny' or 'full' model")
     _args = parser.parse_args()
     if _args.debug:
         logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.INFO)
-    detectron()
+    
+    if _args.modeltype == "detectron":
+      detectron()
+    
+    if _args.modeltype == "yolo":
+      yolo(_args)
