@@ -51,7 +51,7 @@ There are two models in this project: YOLO and Mask R-CNN.
 
 The model folders must be created in `ml/yolo/model` and `ml/detectron/model`.
 
-Please find the models in the release.
+Please find the models in the [release v0.2](https://github.com/clearbothk/clearbotvision/releases/tag/0.2).
 
 #### Run the module
 
