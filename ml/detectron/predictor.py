@@ -8,7 +8,7 @@ from collections import deque
 import cv2
 import torch
 
-from detectron2.data import MetadataCatalog,DatasetCatalog
+from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.engine.defaults import DefaultPredictor
 from detectron2.utils.video_visualizer import VideoVisualizer
 from detectron2.utils.visualizer import ColorMode, Visualizer
@@ -28,6 +28,7 @@ class VisualizationDemo(object):
         self.metadata = MetadataCatalog.get(
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
         )
+        self.metadata.thing_classes = ["Aluminium foil", "Can", "Carton", "Cup", "Glass bottle", "Metal bottle cap", "Other", "Paper", "Plastic bottle", "Plastic bottle cap", "Plastic container", "Plastic film", "Plastic lid", "Pop tab", "Straw", "Styrofoam piece", "Wrapper"]
         self.cpu_device = torch.device("cpu")
         self.instance_mode = instance_mode
 
@@ -240,6 +241,7 @@ class DetectronDetector():
     self.cfg.SOLVER.STEPS = []
     self.cfg.SOLVER.GAMMA = 0.05        # do not decay learning rate
     self.cfg.MODEL.ROI_HEADS.NUM_CLASSES = 17
+    self.cfg.DATASETS.TEST = ("my_dataset_test",)
     self.cfg.freeze()
     self.vis = VisualizationDemo(self.cfg)
 
