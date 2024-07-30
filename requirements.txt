@@ -16,7 +16,7 @@ future==0.18.2
 fvcore==0.1.5.post20210609
 google-auth==1.30.2
 google-auth-oauthlib==0.4.4
-grpcio==1.38.0
+grpcio==1.53.2
 hydra-core==1.1.0rc1
 idna==2.10
 importlib-metadata==4.5.0
