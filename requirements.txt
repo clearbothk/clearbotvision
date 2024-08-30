@@ -30,7 +30,7 @@ Nuitka==0.6.13.2
 numpy==1.19.5
 oauthlib==3.1.1
 omegaconf==2.1.0rc1
-opencv-python==4.5.1.48
+opencv-python==4.8.1.78
 pathspec==0.8.1
 Pillow==8.2.0
 portalocker==2.3.0
